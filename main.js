@@ -1,6 +1,6 @@
 /* This is the sequelize and myslq stuff that we require. */
 const Sequelize = require("sequelize");
-const sequelize = new Sequelize("mysql:fpt7lwzwi3y42ylb/justo");
+const sequelize = new Sequelize("mysql:3306/fpt7lwzwi3y42ylb");
 
 var bc = require("bcrypt-nodejs");
 
