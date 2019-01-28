@@ -10,7 +10,9 @@ module.exports.db = db;
 /* This is for the actual server. */
 var server = require("./server.js");
 
-db.sequelize.sync({force: false}).then(function() {
+db.sequelize.sync({force: false}).catch(function(err){
+	console.log("ERROR: " + JSON.stringify(err) );
+}).then(function() {
 	server.startServer();
 });
 // server.startServer();
