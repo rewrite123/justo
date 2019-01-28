@@ -11,8 +11,9 @@ module.exports.db = db;
 var server = require("./server.js");
 
 db.sequelize.sync({force: false}).then(function() {
-	server.startServer();
+	//server.startServer();
 });
+server.startServer();
 
 /* ---------------------------------------------------------------------- */
 /* ----------------------CUSTOM-UTILS-GO-BELOW-HERE---------------------- */
