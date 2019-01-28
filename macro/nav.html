@@ -1,0 +1,66 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+	<a class="navbar-brand" href="/home">Justo</a>
+	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+
+	<div class="collapse navbar-collapse" id="navbarSupportedContent">
+		<ul class="navbar-nav mr-auto">
+			<li id="homeNavItem" class="nav-item">
+				<a class="nav-link" href="/home">Home <span class="sr-only"></span></a>
+			</li>
+			{{#unless user}}
+				<li id="moreNavItem" class="nav-item">
+					<a class="nav-link" href="/more">More about us</a>
+				</li>
+			{{/unless}}
+			{{#if user}}
+				<li id="jobsNavItem" class="nav-item">
+					<a class="nav-link" href="/jobs">Find jobs</a>
+				</li>
+			{{/if}}
+			{{#if user}}
+				<li id="newPostingNavItem" class="nav-item">
+					<a class="nav-link" href="/newPosting">Post a job</a>
+				</li>
+			{{/if}}
+			{{#if user}}
+				<li id="myProfileNavItem" class="nav-item">
+					<a class="nav-link" href="/myProfile">{{user.first_name}} {{user.last_name}}</a>
+				</li>
+			{{/if}}
+		</ul>
+		{{#if user}}
+			<button onclick="logout()">
+				Logout
+			</button>
+		{{else}}
+			<button>
+				<a href="/login">Login</a>
+			</button>
+		{{/if}}
+	</div>
+</nav>
+
+<script type="application/javascript">
+	function setNavCorrectly(){
+		var home = document.getElementById("homeNavItem");
+		var more = document.getElementById("moreNavItem");
+		var jobs = document.getElementById("jobsNavItem");
+		var newPosting = document.getElementById("newPostingNavItem");
+		var myProfile = document.getElementById("myProfileNavItem");
+		
+		if((window.location.pathname).toLocaleLowerCase().includes("/home")){
+			home.className += " active";
+		}else if((window.location.pathname).toLocaleLowerCase().includes("/more")){
+			more.className += " active";
+		}else if((window.location.pathname).toLocaleLowerCase().includes("/jobs")){
+			jobs.className += " active";
+		}else if((window.location.pathname).toLocaleLowerCase().includes("/newposting")){
+			newPosting.className += " active";
+		}else if((window.location.pathname).toLocaleLowerCase().includes("/myprofile")){
+			myProfile.className += " active";
+		}
+	}
+	setNavCorrectly();
+</script>

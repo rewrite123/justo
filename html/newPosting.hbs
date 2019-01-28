@@ -1,0 +1,98 @@
+<DOCTYPE html>
+<html lang="en-us">
+
+<head>
+	@MACRO=heading
+</head>
+
+<body>
+	@MACRO=nav
+	
+	<div>
+		<img id="homeLogo" src="images/justo-logo.png">
+	</div>
+	
+	<div class="container">
+		
+		{{#if user}}
+			<h1>Please enter your information</h1> 
+			<hr />
+			
+			<div class="login-form">
+				<div class="form-group">
+					<label for="exampleInputEmail1" class="text-uppercase">*Job title</label>
+					<input id="postingTitle" type="text" class="form-control" placeholder="">
+				</div>
+				<div class="form-group">
+					<label for="exampleInputFirstName" class="text-uppercase">Job type</label>
+					<input id="postingType" type="text" class="form-control" placeholder="">
+				</div>
+				<div class="form-group">
+					<label for="exampleInputFirstName" class="text-uppercase">Briefly describe the job that needs to be done (255 characters)</label>
+					<textarea id="postingDesc" maxlength="255" type="text" class="form-control" placeholder=""> </textarea>
+				</div>
+				<div class="form-group">
+					<label class="text-uppercase">Estimated job completion date</label>
+					<input id="postingCompletionDeadline" />
+					<script>
+						$('#postingCompletionDeadline').datepicker({
+							uiLibrary: 'bootstrap4'
+						});
+					</script>
+				</div>
+				
+				<div class="form-check">
+					<button type="submit" onclick="createNewPosting();">Submit</button>
+				</div>
+			</div>
+		{{else}}
+			<div>
+				<h3>
+					Sorry, but is would seem that you are not currently logged in. Please log in and attempt again.
+				</h3>
+				<hr />
+				<p>
+					Best wishes - The Justo team
+				</p>
+			</div>
+		{{/if}}
+		
+	</div>
+	
+	<div>
+		<p id="successMessage" ></p>
+		<p id="failureMessage" ></p>
+	</div>
+	
+	@MACRO=footer
+	
+	<script>
+		function createNewUser(){
+			var password = document.getElementById("password").value;
+			var passwordConfirm = document.getElementById("passwordConfirm").value;
+			
+			if(password === passwordConfirm){
+				$.post("/api/newUser", JSON.stringify({
+					email: document.getElementById("email").value,
+					first_name: document.getElementById("firstName").value,
+					last_name: document.getElementById("lastName").value,
+					password: document.getElementById("password").value
+				})).then(function(data){
+					window.location.href = "/login";
+				});
+			}else{
+				alert("Please make sure that your password matches.");
+			}
+		}
+		function logout(){
+			$.post("/api/logout", JSON.stringify({}) ).then(function(data) {
+				window.location.href = "/index";
+			});
+		}
+	</script>
+	
+	@MACRO=utilScripts
+	
+</body>
+
+</html>

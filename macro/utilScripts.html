@@ -1,0 +1,7 @@
+<script>
+	function logout(){
+		$.post("/api/logout", JSON.stringify({}) ).then(function(data) {
+			window.location.href = "/home";
+		});
+	}
+</script>

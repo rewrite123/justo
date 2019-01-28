@@ -1,0 +1,94 @@
+<DOCTYPE html>
+<html lang="en-us">
+
+<head>
+	@MACRO=heading
+</head>
+
+<body>
+	@MACRO=nav
+	
+	<div>
+		<img id="homeLogo" src="images/justo-logo.png">
+	</div>
+	
+	<div class="container">
+		
+		{{#unless user}}
+			<div>
+				<div class="container">
+					<h3>Please enter your login information</h3> 
+					<hr />
+					
+					<div class="login-form">
+						<div class="form-group">
+							<label for="exampleInputEmail1" class="text-uppercase">Email</label>
+							<input id="email" type="text" class="form-control" placeholder="">
+							
+						</div>
+						<div class="form-group">
+							<label for="exampleInputPassword1" class="text-uppercase">Password</label>
+							<input id="password" type="password" class="form-control" placeholder="">
+						</div>
+						
+						<div class="form-check">
+							<button type="submit" onclick="attemptLogin();">Submit</button>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+		{{else}}
+			<div>
+				<h3>
+					Sorry, but is would seem that you are already logged in. Please log out and attempt again.
+				</h3>
+				<hr />
+				<p>
+					Best wishes - The Justo team
+				</p>
+			</div>
+		{{/unless}}
+		
+	</div>
+	
+	<div>
+		<p id="successMessage" ></p>
+		<p id="failureMessage" ></p>
+	</div>
+	
+	@MACRO=footer
+	
+	<script>
+		function attemptLogin(){
+			var email = document.getElementById("email").value;
+			var password = document.getElementById("password").value;
+			
+			var obj = {};
+			obj.email = email;
+			obj.password = password;
+			$.post("/api/attemptLogin", JSON.stringify(obj) ).then(function(data) {
+				var successMessage = document.getElementById("successMessage");
+				successMessage.textContent = data.successMessage;
+				var failureMessage = document.getElementById("failureMessage");
+				failureMessage.textContent = data.failureMessage;
+				console.log(data);
+				if(data.successMessage){
+					setTimeout(function(){
+						window.location.href = "/myPage";
+					}, 2000);
+				}
+			});
+		}
+		function logout(){
+			$.post("/api/logout", JSON.stringify({}) ).then(function(data) {
+				window.location.href = "/index";
+			});
+		}
+	</script>
+	
+	@MACRO=utilScripts
+	
+</body>
+
+</html>

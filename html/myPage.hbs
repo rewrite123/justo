@@ -1,0 +1,71 @@
+<DOCTYPE html>
+<html lang="en-us">
+
+<head>
+	@MACRO=heading
+</head>
+
+<body>
+	@MACRO=nav
+	
+	<br />
+	
+	<div class="container">
+		
+		{{#if user}}
+			{{#if user.image}}
+				<img id="homeLogo" src="{{{user.image}}}" class="rounded" alt="ProfilePicture"/>
+			{{else}}
+				<img src="https://www.weact.org/wp-content/uploads/2016/10/Blank-profile.png" class="rounded" width="200px" alt="ProfilePicture"/>
+			{{/if}}
+			<br />
+			<h2>{{{user.first_name}}} {{{user.last_name}}}</h2>
+			<h5>{{{user.email}}}</h5>
+			<hr />
+			{{#if postings}}
+				<h5 class="float-left">Your Job Postings: </h5>
+				{{#each postings}}
+					
+				{{/each}}
+			{{else}}
+				<h5>Your Job Postings: </h5>
+				<p>Unfortunately, you havent posted any jobs yet :(</p>
+			{{/if}}
+			{{#if jobs}}
+				<h5 class="float-left">Jobs you have accepted: </h5>
+				{{#each jobs}}
+					
+				{{/each}}
+			{{else}}
+				<h5>Jobs you have accepted: </h5>
+				<p>Unfortunately, you havent accepted any jobs yet :(</p>
+			{{/if}}
+		{{else}}
+			<div>
+				<h3>
+					Sorry, but is would seem that you are currently not logged in. Please log in and attempt again.
+				</h3>
+				<hr />
+				<p>
+					Best wishes - The Justo team
+				</p>
+			</div>
+		{{/if}}
+		
+	</div>
+	
+	@MACRO=footer
+	
+	<script>
+		function logout(){
+			$.post("/api/logout", JSON.stringify({}) ).then(function(data) {
+				window.location.href = "/index";
+			});
+		}
+	</script>
+	
+	@MACRO=utilScripts
+	
+</body>
+
+</html>
