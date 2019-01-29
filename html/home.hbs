@@ -14,8 +14,12 @@
 			Justo is a robust tracking application that allows for clear real-time information regarding rates, hours, payment and invoicing, and important dates for freelancers and employers. Justo acts as the intermediary - keeping all parties on the same timeline and ensuring that fair work is rewarded with fair pay.
 		</p>
 		<div>
-			<button><a href="/newUser">Signup</a></button>
-			<button><a href="/login">Login</a></button>
+			{{#unless user}}
+				<button><a href="/newUser">Signup</a></button>
+				<button><a href="/login">Login</a></button>
+			{{else}}
+				<button><a href="/myProfile">See my profile</a></button>
+			{{/unless}}
 		</div>
 	</div>
 	
