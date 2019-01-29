@@ -26,14 +26,14 @@ function main(req, res){
 						posting_desc:  data.posting_desc,
 						posting_completion_deadline: moment(data.posting_completion_deadline).format("YYYY-MM-DD"),
 						posting_owner: user.id
-				}).then(function(newPosting){
-					res.setHeader("Content-Type", "application/json");
-					res.end( JSON.stringify({message: "Successfully created new posting " + JSON.stringify(newPosting) }) );
-				});
+					}).then(function(newPosting){
+						res.setHeader("Content-Type", "application/json");
+						res.end( JSON.stringify({message: "Successfully created new posting " + JSON.stringify(newPosting) }) );
+					});
 				});
 			}else{
 				res.setHeader("Content-Type", "application/json");
-				res.end( JSON.stringify({message: "Could not find a user with this session. Try loggin in again if this persists. "}) );
+				res.end( JSON.stringify({message: "Could not find a user with this session. Try logging in again if this persists."}) );
 			}
 		});
 	});

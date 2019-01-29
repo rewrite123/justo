@@ -1,0 +1,41 @@
+<DOCTYPE html>
+<html lang="en-us">
+
+<head>
+	@MACRO=heading
+</head>
+
+<body>
+	@MACRO=nav
+	
+	<div>
+		<img id="homeLogo" src="images/justo-logo.png">
+	</div>
+	
+	<div class="container">
+		
+		{{#if user}}
+			{{#for postings}}
+				<h1>{{this.posting_title}}</h1>
+			{{/for}}
+		{{else}}
+			<div>
+				<h3>
+					Sorry, but is would seem that you are not logged in. Please log in and attempt again.
+				</h3>
+				<hr />
+				<p>
+					Best wishes - The Justo team
+				</p>
+			</div>
+		{{/if}}
+		
+	</div>
+	
+	@MACRO=footer
+	
+	@MACRO=utilScripts
+	
+</body>
+
+</html>
