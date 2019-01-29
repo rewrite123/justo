@@ -17,12 +17,12 @@
 		{{#if user}}
 			{{#each postings}}
 				<div class="row">
-					<div class="col-sm-12">
+					<div>
 						<h4><a href="/posting?posting_id={{this.id}}">{{this.posting_title}}</a></h4>
 						<h6>{{this.posting_type}}</h6>
 					</div>
-					<div class="col-sm-12">
-						<small>{{posting_owner}}</small>
+					<div>
+						<small>Owner: {{posting_owner}}</small>
 					</div>
 				</div>
 			{{/each}}
