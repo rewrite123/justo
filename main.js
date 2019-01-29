@@ -1,11 +1,13 @@
 /* This is the sequelize and myslq stuff that we require. */
 
-const sequelize = db.sequelize;//"mysql://f4c6q7bw69vclpct@qbct6vwi8q648mrn.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/fpt7lwzwi3y42ylb");
+// const sequelize = db.sequelize;//"mysql://f4c6q7bw69vclpct@qbct6vwi8q648mrn.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/fpt7lwzwi3y42ylb");
 
 var bc = require("bcrypt-nodejs");
 
 var db = require(__dirname + "/models");
 module.exports.db = db;
+
+const sequelize = db.sequelize;
 
 /* This is for the actual server. */
 var server = require("./server.js");
