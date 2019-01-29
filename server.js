@@ -1,4 +1,4 @@
-const http = require("https");
+const http = require("http");
 const url = require("url");
 var handlebars = require("handlebars");
 const fs = require("fs");
@@ -7,10 +7,10 @@ var path = require("path")
 /* This is the port of the server. */
 var port = process.env.PORT || 443;
 
-var options = {
-	key: fs.readFileSync('privateKey.key'),
-	cert: fs.readFileSync('certificate.crt')
-};
+// var options = {
+	// key: fs.readFileSync('privateKey.key'),
+	// cert: fs.readFileSync('certificate.crt')
+// };
 
 /* This is how one would start the serveer. */
 function startServer(){
@@ -365,7 +365,7 @@ function htmlMacro(fileString){
 module.exports.htmlMacro = htmlMacro;
 
 /* This is the actual server that does all of the work. */
-const server = http.createServer(options, function(req, res){
+const server = http.createServer({}, function(req, res){
 	/* If this is never set to true, then we servee a 404. */
 	var triggered = false;
 	
