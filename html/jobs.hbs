@@ -15,9 +15,9 @@
 	<div class="container">
 		
 		{{#if user}}
-			{{#for postings}}
+			{{#each postings}}
 				<h1>{{this.posting_title}}</h1>
-			{{/for}}
+			{{/each}}
 		{{else}}
 			<div>
 				<h3>
