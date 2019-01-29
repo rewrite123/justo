@@ -16,7 +16,7 @@
 			{{#if user.image}}
 				<img id="homeLogo" src="{{{user.image}}}" class="rounded" alt="ProfilePicture"/>
 			{{else}}
-				<img src="https://www.weact.org/wp-content/uploads/2016/10/Blank-profile.png" class="rounded" width="200px" alt="ProfilePicture"/>
+				<img src="images/blank-profile-picture.png" class="rounded" width="200px" alt="ProfilePicture"/>
 			{{/if}}
 			<br />
 			<h2>{{{user.first_name}}} {{{user.last_name}}}</h2>
@@ -41,6 +41,7 @@
 				<p>Unfortunately, you havent accepted any jobs yet :(</p>
 			{{/if}}
 		{{else}}
+			<img id="homeLogo" src="images/justo-logo.png">
 			<div>
 				<h3>
 					Sorry, but is would seem that you are currently not logged in. Please log in and attempt again.
