@@ -5,12 +5,13 @@ var bc = require("bcrypt-nodejs");
 
 /* */
 function main(req, res){
-	console.log("-------------GOT HERE YOU SON OF A BITCH");
 	server.extractJSONFromRequest(req).then(function(data){
 		db.users.find({
 			where: {
 				email: data.email
 			}
+		}).catch(function(err){
+			console.log("---------------ERROR: " + err);
 		}).then(function(user){
 			if(user){
 				if(bc.compareSync(data.password, user.password)){
