@@ -5,6 +5,7 @@ var bc = require("bcrypt-nodejs");
 
 /* */
 function main(req, res){
+	console.log("-------------GOT HERE YOU SON OF A BITCH");
 	server.extractJSONFromRequest(req).then(function(data){
 		db.users.find({
 			where: {
