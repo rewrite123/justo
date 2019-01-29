@@ -67,26 +67,14 @@
 	@MACRO=footer
 	
 	<script>
-		function createNewUser(){
-			var password = document.getElementById("password").value;
-			var passwordConfirm = document.getElementById("passwordConfirm").value;
-			
-			if(password === passwordConfirm){
-				$.post("/api/newUser", JSON.stringify({
-					email: document.getElementById("email").value,
-					first_name: document.getElementById("firstName").value,
-					last_name: document.getElementById("lastName").value,
-					password: document.getElementById("password").value
-				})).then(function(data){
-					window.location.href = "/login";
-				});
-			}else{
-				alert("Please make sure that your password matches.");
-			}
-		}
-		function logout(){
-			$.post("/api/logout", JSON.stringify({}) ).then(function(data) {
-				window.location.href = "/index";
+		function createNewPosting(){
+			$.post("/api/newPosting", JSON.stringify({
+				posting_title: document.getElementById("postingTitle").value,
+				posting_type: document.getElementById("postingType").value,
+				posting_desc: document.getElementById("postingDesc").value,
+				posting_completion_deadline: document.getElementById("postingCompletionDeadline").value
+			})).then(function(data){
+				window.location.href = "/myProfile";
 			});
 		}
 	</script>
