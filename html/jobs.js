@@ -21,8 +21,10 @@ async function main(req){
 		if(parseInt(query.page) > 1){
 			obj.goBackAPageUrl = "/jobs?page=" + (parseInt(query.page)-1);
 		}
-		if(obj.postings.length >= 20){
-			obj.goForwardAPageUrl = "/jobs?page=" + (parseInt(query.page)+1);
+		if(obj.postings){
+			if(obj.postings.length >= 20){
+				obj.goForwardAPageUrl = "/jobs?page=" + (parseInt(query.page)+1);
+			}
 		}
 		resolve(obj);
 	});
