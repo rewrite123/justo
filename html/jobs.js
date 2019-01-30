@@ -17,7 +17,7 @@ async function main(req){
 				obj.postings.push(postings[i]);
 			}
 		}
-		console.log( JSON.stringify(obj.postings) );
+		//console.log( JSON.stringify(obj.postings) );
 		resolve(obj);
 	});
 	return prom;
