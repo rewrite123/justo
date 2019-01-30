@@ -12,7 +12,7 @@ async function main(req){
 		if(obj.user){
 			obj.postings = await db.postings.find({});
 		}
-		console.log(JSON.stringify(obj.postings));
+		console.log( JSON.stringify(obj.postings) );
 		resolve(obj);
 	});
 	return prom;
