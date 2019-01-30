@@ -23,12 +23,21 @@
 			<h5>{{{user.email}}}</h5>
 			<hr />
 			{{#if postings}}
-				<h5 class="float-left">Your Job Postings: </h5>
-				{{#each postings}}
-					
-				{{/each}}
+				<h4>Your Job Postings: </h4>
+				<br />
+				<ul class="list-group">
+					{{#each postings}}
+						<li class="list-group-item" style="text-align: left;">
+							<span class="float-left">
+								<h3><a href="/posting?posting_id={{this.id}}">{{this.posting_title}}</a></h3>
+								<h5>Type: {{this.posting_type}}</h5>
+								<p>Due by: {{this.posting_completion_deadline}}</p>
+							</span>
+						</li>
+					{{/each}}
+				</ul>
 			{{else}}
-				<h5>Your Job Postings: </h5>
+				<h4>Your Job Postings: </h4>
 				<p>Unfortunately, you havent posted any jobs yet :(</p>
 			{{/if}}
 			{{#if jobs}}

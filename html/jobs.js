@@ -18,8 +18,12 @@ async function main(req){
 			obj.postings = [];
 			for(let i in postings){obj.postings.push(postings[i])}
 		}
-		obj.goBackAPageUrl = "/jobs?page=" + (parseInt(query.page)-1);
-		obj.goForwardAPageUrl = "/jobs?page=" + (parseInt(query.page)+1);
+		if(parseInt(query.page) > 1){
+			obj.goBackAPageUrl = "/jobs?page=" + (parseInt(query.page)-1);
+		}
+		if(obj.postings.length >= 20){
+			obj.goForwardAPageUrl = "/jobs?page=" + (parseInt(query.page)+1);
+		}
 		resolve(obj);
 	});
 	return prom;

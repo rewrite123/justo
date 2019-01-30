@@ -38,6 +38,7 @@ function authenticateUser(cookies){
 							id: session.session_user_id
 						}
 					}).then(function(user){
+						result.id         = user.id;
 						result.first_name = user.first_name;
 						result.last_name  = user.last_name;
 						result.email      = user.email;

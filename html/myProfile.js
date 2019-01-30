@@ -10,18 +10,24 @@ async function main(req){
 		var obj = {};
 		obj.user = await mainJs.authenticateUser(cookies);
 		if(obj.user){
-			obj.postings = await db.postings.find({
+			obj.postings = [];
+			var postings = await db.postings.findAll({
 				where: {
 					posting_owner: obj.user.id
 				}
 			});
-			obj.jobs = await db.posting_employees.find({
+			for(let i in postings){obj.postings.push(postings[i]);}
+			obj.jobs = [];
+			var jobs = await db.posting_employees.findAll({
 				where: {
 					employee: obj.user.id
 				}
 			});
+			for(let i in jobs){obj.jobs.push(jobs[i])}
+			resolve(obj);
+		}else{
+			resolve(obj);
 		}
-		resolve(obj);
 	});
 	return prom;
 }

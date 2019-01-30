@@ -29,26 +29,31 @@
 			</div>
 		{{/unless}}
 		
-		<ul class="list-group">
+		<ul class="list-group" style="text-align: left;">
 			{{#each postings}}
 				<li class="list-group-item">
-					<h4><a href="/posting?posting_id={{this.id}}">{{this.posting_title}}</a></h4>
-					<h6>{{this.posting_type}}</h6>
-					<small>{{this.posting_completion_deadline}}</small>
-					{{this.id}}
+					<span class="float-left">
+						<h3><a href="/posting?posting_id={{this.id}}">{{this.posting_title}}</a></h3>
+						<h5>Type: {{this.posting_type}}</h5>
+						<p>Due by: {{this.posting_completion_deadline}}</p>
+					</span>
 				</li>
 			{{/each}}
 		</ul>
 		
 		<hr />
-		<span class="float-left">
-			<button><a href="{{goBackAPageUrl}}"><h4>Back</h4></a></button>
-		</span>
-		<span class="float-right">
-			{{#if postings}}
-				<button><a href="{{goForwardAPageUrl}}"><h4>Next</h4></a></button>
+		{{#if user}}
+			{{#if goBackAPageUrl}}
+				<span class="float-left">
+					<button><a href="{{goBackAPageUrl}}"><h4>Back</h4></a></button>
+				</span>
 			{{/if}}
-		</span>
+			{{#if goForwardAPageUrl}}
+				<span class="float-right">
+					<button><a href="{{goForwardAPageUrl}}"><h4>Next</h4></a></button>
+				</span>
+			{{/if}}
+		{{/if}}
 		
 	</div>
 	
