@@ -12,6 +12,11 @@ async function main(req){
 		if(obj.user){
 			obj.postings = await db.postings.find({});
 		}
+		for(let i in obj.postings){
+			if(obj.postings.posting_title.trim() == ""){
+				db.postings.destroy({where: {id: obj.postings.id}});
+			}
+		}
 		resolve(obj);
 	});
 	return prom;
