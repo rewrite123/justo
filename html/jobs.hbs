@@ -8,15 +8,16 @@
 <body>
 	@MACRO=nav
 	
-	<div>
-		<img id="homeLogo" src="images/justo-logo.png">
-	</div>
+	{{#unless user}}
+		<div>
+			<img id="homeLogo" src="images/justo-logo.png">
+		</div>
+	{{/unless}}
 	
 	<div class="container">
+		<hr />
 		
-		{{#if user}}
-			
-		{{else}}
+		{{#unless user}}
 			<div>
 				<h3>
 					Sorry, but is would seem that you are not logged in. Please log in and attempt again.
@@ -26,20 +27,28 @@
 					Best wishes - The Justo team
 				</p>
 			</div>
-		{{/if}}
+		{{/unless}}
 		
 		<ul class="list-group">
-				{{#each postings}}
-					{{#if this.posting_title}}
-						<li class="list-group-item">
-							<h4><a href="/posting?posting_id={{this.id}}">{{this.posting_title}}</a></h4>
-							<h6>{{this.posting_type}}</h6>
-							<small>{{this.posting_completion_deadline}}</small>
-							{{this.id}}
-						</li>
-					{{/if}}
-				{{/each}}
-			</ul>
+			{{#each postings}}
+				<li class="list-group-item">
+					<h4><a href="/posting?posting_id={{this.id}}">{{this.posting_title}}</a></h4>
+					<h6>{{this.posting_type}}</h6>
+					<small>{{this.posting_completion_deadline}}</small>
+					{{this.id}}
+				</li>
+			{{/each}}
+		</ul>
+		
+		<hr />
+		<span class="float-left">
+			<button><a href="{{goBackAPageUrl}}"><h4>Back</h4></a></button>
+		</span>
+		<span class="float-right">
+			{{#if postings}}
+				<button><a href="{{goForwardAPageUrl}}"><h4>Next</h4></a></button>
+			{{/if}}
+		</span>
 		
 	</div>
 	

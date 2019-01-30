@@ -26,8 +26,8 @@ function main(req, res){
 					});
 					res.writeHead(200, {
 						"Set-Cookie": [
-							"session_id=" + sessionId + "; HttpOnly; path=/;", 
-							"salt=" + salt + "; HttpOnly; path=/;"
+							"session_id=" + sessionId + "; Secure; HttpOnly; path=/;", 
+							"salt=" + salt + "; Secure; HttpOnly; path=/;"
 						],
 						"Content-Type": "application/json"
 					});
