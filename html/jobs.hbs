@@ -16,14 +16,7 @@
 		
 		{{#if user}}
 			<ul class="list-group">
-				{{#each postings}}
-					<li class="list-group-item">
-						<h4><a href="/posting?posting_id={{this.id}}">{{this.posting_title}}</a></h4>
-						<h6>{{this.posting_type}}</h6>
-						<small>{{this.posting_completion_deadline}}</small>
-						{{this.id}}
-					</li>
-				{{/each}}
+				
 			</ul>
 		{{else}}
 			<div>
