@@ -10,7 +10,7 @@ async function main(req){
 		var obj = {};
 		obj.user = await mainJs.authenticateUser(cookies);
 		if(obj.user){
-			obj.postings = {posting_title: "A", id: -1, posting_type: "TEST", posting_completion_deadline: "9/11/1998"};//await db.postings.find({});
+			obj.postings = [{posting_title: "A", id: -1, posting_type: "TEST", posting_completion_deadline: "9/11/1998"}];//await db.postings.find({});
 		}
 		console.log( JSON.stringify(obj.postings) );
 		resolve(obj);
