@@ -14,6 +14,7 @@ async function main(req){
 			var postings = await db.postings.find({});
 			obj.postings = [];
 			for(let i in postings){
+				console.log("---------------" + JSON.stringify(postings));
 				obj.postings.push(postings[i]);
 			}
 		}
