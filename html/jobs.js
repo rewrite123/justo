@@ -11,11 +11,9 @@ async function main(req){
 		obj.user = await mainJs.authenticateUser(cookies);
 		if(obj.user){
 			obj.postings = await db.postings.find({});
-			console.log( JSON.stringify(obj.postings) );
-			resolve(obj);
-		}else{
-			resolve(obj);
 		}
+		console.log( JSON.stringify(obj.postings) );
+		resolve(obj);
 	});
 	return prom;
 }
