@@ -1,23 +1,23 @@
 {
   "development": {
     "username": "root",
-    "password": "Fib11235!",
+    "password": "",
     "database": "justo",
     "host": "localhost",
     "dialect": "mysql"
   },
   "test": {
     "username": "root",
-    "password": "Fib11235!",
+    "password": "",
     "database": "justo",
     "host": "localhost",
     "dialect": "mysql"
   },
   "production": {
-    "username": "j9kd9884alu4jal4",
-    "password": "ht349fumnd1ydgt8",
-    "database": "fpt7lwzwi3y42ylb",
-    "host": "qbct6vwi8q648mrn.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
+    "username": "",
+    "password": "",
+    "database": "",
+    "host": "",
     "dialect": "mysql"
   }
 }
