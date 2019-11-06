@@ -16,7 +16,7 @@
     "handlebars": "^4.0.12",
     "moment": "^2.24.0",
     "mysql2": "^1.6.4",
-    "sequelize": "^4.42.0",
+    "sequelize": "^5.15.1",
     "validator": "^10.11.0"
   }
 }
